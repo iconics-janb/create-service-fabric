@@ -2,11 +2,11 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "virtualMachineScaleSets_node_adminPassword": {
+    "adminPassword": {
       "defaultValue": null,
       "type": "SecureString"
     },
-    "virtualMachineScaleSets_node_name": {
+    "virtualMachineNodeName": {
       "defaultValue": "node",
       "type": "String"
     },
@@ -18,7 +18,7 @@
       "defaultValue": "PublicIP-LB-FE-0",
       "type": "String"
     },
-    "virtualNetworks_VNet_name": {
+    "vNetName": {
       "defaultValue": "VNet",
       "type": "String"
     },
@@ -161,7 +161,7 @@
         "tier": "Standard",
         "capacity": 5
       },
-      "name": "[parameters('virtualMachineScaleSets_node_name')]",
+      "name": "[parameters('virtualMachineNodeName')]",
       "apiVersion": "2015-06-15",
       "location": "westeurope",
       "tags": {
@@ -174,14 +174,14 @@
         },
         "virtualMachineProfile": {
           "osProfile": {
-            "computerNamePrefix": "[parameters('virtualMachineScaleSets_node_name')]",
+            "computerNamePrefix": "[parameters('virtualMachineNodeName')]",
             "adminUsername": "jan",
             "windowsConfiguration": {
               "provisionVMAgent": true,
               "enableAutomaticUpdates": true
             },
             "secrets": [ ],
-            "adminPassword": "[parameters('virtualMachineScaleSets_node_adminPassword')]"
+            "adminPassword": "[parameters('adminPassword')]"
           },
           "storageProfile": {
             "osDisk": {
@@ -214,7 +214,7 @@
                       "name": "NIC-0",
                       "properties": {
                         "subnet": {
-                          "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_VNet_name')), '/subnets/Subnet-0')]"
+                          "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('vNetName')), '/subnets/Subnet-0')]"
                         },
                         "loadBalancerBackendAddressPools": [
                           {
@@ -254,17 +254,17 @@
               {
                 "properties": {
                   "publisher": "Microsoft.Azure.ServiceFabric",
-                  "type": "[concat('ServiceFabricNode', parameters('virtualMachineScaleSets_node_name'))]",
+                  "type": "[concat('ServiceFabricNode', parameters('virtualMachineNodeName'))]",
                   "typeHandlerVersion": "1.0",
                   "autoUpgradeMinorVersion": false,
                   "settings": {
                     "clusterEndpoint": "https://westeurope.servicefabric.azure.com/runtime/clusters/552ca62f-b311-496b-bad6-5c9b7bcc5845",
-                    "nodeTypeRef": "[parameters('virtualMachineScaleSets_node_name')]",
+                    "nodeTypeRef": "[parameters('virtualMachineNodeName')]",
                     "dataPath": "D:\\\\SvcFab",
                     "durabilityLevel": "Bronze"
                   }
                 },
-                "name": "[concat(parameters('virtualMachineScaleSets_node_name'),'_ServiceFabricNode', parameters('virtualMachineScaleSets_node_name'))]"
+                "name": "[concat(parameters('virtualMachineNodeName'),'_ServiceFabricNode', parameters('virtualMachineNodeName'))]"
               },
               {
                 "properties": {
@@ -319,7 +319,7 @@
       },
       "resources": [ ],
       "dependsOn": [
-        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_VNet_name'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('vNetName'))]",
         "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_LB_icocluster_node_name'))]"
       ]
     },
@@ -553,7 +553,7 @@
     {
       "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/virtualNetworks/VNet'.",
       "type": "Microsoft.Network/virtualNetworks",
-      "name": "[parameters('virtualNetworks_VNet_name')]",
+      "name": "[parameters('vNetName')]",
       "apiVersion": "2016-03-30",
       "location": "westeurope",
       "tags": {
