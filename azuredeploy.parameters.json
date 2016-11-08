@@ -1,1 +1,118 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualMachineScaleSets_node_adminPassword": {
+      "value": null
+    },
+    "virtualMachineScaleSets_node_name": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_name": {
+      "value": null
+    },
+    "publicIPAddresses_PublicIP_LB_FE_0_name": {
+      "value": null
+    },
+    "virtualNetworks_VNet_name": {
+      "value": null
+    },
+    "servers_icoserver_name": {
+      "value": null
+    },
+    "storageAccounts_e55mqfpwqqqys100_name": {
+      "value": null
+    },
+    "storageAccounts_e55mqfpwqqqys101_name": {
+      "value": null
+    },
+    "storageAccounts_e55mqfpwqqqys102_name": {
+      "value": null
+    },
+    "storageAccounts_e55mqfpwqqqys103_name": {
+      "value": null
+    },
+    "storageAccounts_e55mqfpwqqqys104_name": {
+      "value": null
+    },
+    "storageAccounts_e55mqfpwqqqys3_name": {
+      "value": null
+    },
+    "storageAccounts_icostora_name": {
+      "value": null
+    },
+    "storageAccounts_sflogse55mqfpwqqqys2_name": {
+      "value": null
+    },
+    "databases_icodb_name": {
+      "value": null
+    },
+    "databases_master_name": {
+      "value": null
+    },
+    "firewallRules_AllowAllWindowsAzureIps_name": {
+      "value": null
+    },
+    "firewallRules_ClientIPAddress_2016_9_4_12_32_39_name": {
+      "value": null
+    },
+    "firewallRules_ClientIPAddress_2016_9_5_17_2_27_name": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_1": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_2": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_3": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_4": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_5": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_6": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_7": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_8": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_9": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_10": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_11": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_12": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_13": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_14": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_15": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_16": {
+      "value": null
+    },
+    "loadBalancers_LB_icocluster_node_id_17": {
+      "value": null
+    }
+  }
+}
 
