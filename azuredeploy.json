@@ -1,1 +1,851 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualMachineScaleSets_node_adminPassword": {
+      "defaultValue": null,
+      "type": "SecureString"
+    },
+    "virtualMachineScaleSets_node_name": {
+      "defaultValue": "node",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_name": {
+      "defaultValue": "LB-icocluster-node",
+      "type": "String"
+    },
+    "publicIPAddresses_PublicIP_LB_FE_0_name": {
+      "defaultValue": "PublicIP-LB-FE-0",
+      "type": "String"
+    },
+    "virtualNetworks_VNet_name": {
+      "defaultValue": "VNet",
+      "type": "String"
+    },
+    "servers_icoserver_name": {
+      "defaultValue": "icoserver",
+      "type": "String"
+    },
+    "storageAccounts_e55mqfpwqqqys100_name": {
+      "defaultValue": "e55mqfpwqqqys100",
+      "type": "String"
+    },
+    "storageAccounts_e55mqfpwqqqys101_name": {
+      "defaultValue": "e55mqfpwqqqys101",
+      "type": "String"
+    },
+    "storageAccounts_e55mqfpwqqqys102_name": {
+      "defaultValue": "e55mqfpwqqqys102",
+      "type": "String"
+    },
+    "storageAccounts_e55mqfpwqqqys103_name": {
+      "defaultValue": "e55mqfpwqqqys103",
+      "type": "String"
+    },
+    "storageAccounts_e55mqfpwqqqys104_name": {
+      "defaultValue": "e55mqfpwqqqys104",
+      "type": "String"
+    },
+    "storageAccounts_e55mqfpwqqqys3_name": {
+      "defaultValue": "e55mqfpwqqqys3",
+      "type": "String"
+    },
+    "storageAccounts_icostora_name": {
+      "defaultValue": "icostora",
+      "type": "String"
+    },
+    "storageAccounts_sflogse55mqfpwqqqys2_name": {
+      "defaultValue": "sflogse55mqfpwqqqys2",
+      "type": "String"
+    },
+    "databases_icodb_name": {
+      "defaultValue": "icoserver/icodb",
+      "type": "String"
+    },
+    "databases_master_name": {
+      "defaultValue": "icoserver/master",
+      "type": "String"
+    },
+    "firewallRules_AllowAllWindowsAzureIps_name": {
+      "defaultValue": "icoserver/AllowAllWindowsAzureIps",
+      "type": "String"
+    },
+    "firewallRules_ClientIPAddress_2016_9_4_12_32_39_name": {
+      "defaultValue": "icoserver/ClientIPAddress_2016-9-4_12-32-39",
+      "type": "String"
+    },
+    "firewallRules_ClientIPAddress_2016_9_5_17_2_27_name": {
+      "defaultValue": "icoserver/ClientIPAddress_2016-9-5_17-2-27",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/frontendIPConfigurations/LoadBalancerIPConfig",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_1": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/backendAddressPools/LoadBalancerBEAddressPool",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_2": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/probes/FabricGatewayProbe",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_3": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/frontendIPConfigurations/LoadBalancerIPConfig",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_4": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/backendAddressPools/LoadBalancerBEAddressPool",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_5": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/probes/FabricHttpGatewayProbe",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_6": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/frontendIPConfigurations/LoadBalancerIPConfig",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_7": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/backendAddressPools/LoadBalancerBEAddressPool",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_8": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/probes/FabricGatewayProbe",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_9": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/frontendIPConfigurations/LoadBalancerIPConfig",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_10": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/backendAddressPools/LoadBalancerBEAddressPool",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_11": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/probes/FabricGatewayProbe",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_12": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/frontendIPConfigurations/LoadBalancerIPConfig",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_13": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/frontendIPConfigurations/LoadBalancerIPConfig",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_14": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/frontendIPConfigurations/LoadBalancerIPConfig",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_15": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/frontendIPConfigurations/LoadBalancerIPConfig",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_16": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/frontendIPConfigurations/LoadBalancerIPConfig",
+      "type": "String"
+    },
+    "loadBalancers_LB_icocluster_node_id_17": {
+      "defaultValue": "/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node/frontendIPConfigurations/LoadBalancerIPConfig",
+      "type": "String"
+    }
+  },
+  "variables": { },
+  "resources": [
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Compute/virtualMachineScaleSets/node'.",
+      "type": "Microsoft.Compute/virtualMachineScaleSets",
+      "sku": {
+        "name": "Standard_D1_v2",
+        "tier": "Standard",
+        "capacity": 5
+      },
+      "name": "[parameters('virtualMachineScaleSets_node_name')]",
+      "apiVersion": "2015-06-15",
+      "location": "westeurope",
+      "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "icocluster"
+      },
+      "properties": {
+        "upgradePolicy": {
+          "mode": "Automatic"
+        },
+        "virtualMachineProfile": {
+          "osProfile": {
+            "computerNamePrefix": "[parameters('virtualMachineScaleSets_node_name')]",
+            "adminUsername": "jan",
+            "windowsConfiguration": {
+              "provisionVMAgent": true,
+              "enableAutomaticUpdates": true
+            },
+            "secrets": [ ],
+            "adminPassword": "[parameters('virtualMachineScaleSets_node_adminPassword')]"
+          },
+          "storageProfile": {
+            "osDisk": {
+              "vhdContainers": [
+                "https://e55mqfpwqqqys100.blob.core.windows.net/vhds",
+                "https://e55mqfpwqqqys101.blob.core.windows.net/vhds",
+                "https://e55mqfpwqqqys102.blob.core.windows.net/vhds",
+                "https://e55mqfpwqqqys103.blob.core.windows.net/vhds",
+                "https://e55mqfpwqqqys104.blob.core.windows.net/vhds"
+              ],
+              "name": "vmssosdisk",
+              "createOption": "FromImage",
+              "caching": "ReadOnly"
+            },
+            "imageReference": {
+              "publisher": "MicrosoftWindowsServer",
+              "offer": "WindowsServer",
+              "sku": "2012-R2-Datacenter",
+              "version": "latest"
+            }
+          },
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
+                "name": "NIC-0",
+                "properties": {
+                  "primary": true,
+                  "ipConfigurations": [
+                    {
+                      "name": "NIC-0",
+                      "properties": {
+                        "subnet": {
+                          "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_VNet_name')), '/subnets/Subnet-0')]"
+                        },
+                        "loadBalancerBackendAddressPools": [
+                          {
+                            "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_LB_icocluster_node_name')), '/backendAddressPools/LoadBalancerBEAddressPool')]"
+                          }
+                        ],
+                        "loadBalancerInboundNatPools": [
+                          {
+                            "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_LB_icocluster_node_name')), '/inboundNatPools/LoadBalancerBEAddressNatPool')]"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "extensionProfile": {
+            "extensions": [
+              {
+                "properties": {
+                  "publisher": "Microsoft.Compute",
+                  "type": "CustomScriptExtension",
+                  "typeHandlerVersion": "1.7",
+                  "autoUpgradeMinorVersion": false,
+                  "settings": {
+                    "fileUris": [
+                      "https://serviceprofiler.azurewebsites.net/content/downloads/InstallNetFx46.ps1"
+                    ],
+                    "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File InstallNetFx46.ps1"
+                  },
+                  "forceUpdateTag": "RerunExtension"
+                },
+                "name": "CustomScriptExtensionInstallNet46"
+              },
+              {
+                "properties": {
+                  "publisher": "Microsoft.Azure.ServiceFabric",
+                  "type": "[concat('ServiceFabricNode', parameters('virtualMachineScaleSets_node_name'))]",
+                  "typeHandlerVersion": "1.0",
+                  "autoUpgradeMinorVersion": false,
+                  "settings": {
+                    "clusterEndpoint": "https://westeurope.servicefabric.azure.com/runtime/clusters/552ca62f-b311-496b-bad6-5c9b7bcc5845",
+                    "nodeTypeRef": "[parameters('virtualMachineScaleSets_node_name')]",
+                    "dataPath": "D:\\\\SvcFab",
+                    "durabilityLevel": "Bronze"
+                  }
+                },
+                "name": "[concat(parameters('virtualMachineScaleSets_node_name'),'_ServiceFabricNode', parameters('virtualMachineScaleSets_node_name'))]"
+              },
+              {
+                "properties": {
+                  "publisher": "Microsoft.Azure.Diagnostics",
+                  "type": "IaaSDiagnostics",
+                  "typeHandlerVersion": "1.5",
+                  "autoUpgradeMinorVersion": true,
+                  "settings": {
+                    "WadCfg": {
+                      "DiagnosticMonitorConfiguration": {
+                        "overallQuotaInMB": "50000",
+                        "EtwProviders": {
+                          "EtwEventSourceProviderConfiguration": [
+                            {
+                              "provider": "Microsoft-ServiceFabric-Actors",
+                              "scheduledTransferKeywordFilter": "1",
+                              "scheduledTransferPeriod": "PT5M",
+                              "DefaultEvents": {
+                                "eventDestination": "ServiceFabricReliableActorEventTable"
+                              }
+                            },
+                            {
+                              "provider": "Microsoft-ServiceFabric-Services",
+                              "scheduledTransferPeriod": "PT5M",
+                              "DefaultEvents": {
+                                "eventDestination": "ServiceFabricReliableServiceEventTable"
+                              }
+                            }
+                          ],
+                          "EtwManifestProviderConfiguration": [
+                            {
+                              "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+                              "scheduledTransferLogLevelFilter": "Information",
+                              "scheduledTransferKeywordFilter": "4611686018427387904",
+                              "scheduledTransferPeriod": "PT5M",
+                              "DefaultEvents": {
+                                "eventDestination": "ServiceFabricSystemEventTable"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "StorageAccount": "e55mqfpwqqqys3"
+                  }
+                },
+                "name": "[concat('VMDiagnosticsVmExt_vmNodeType0Name')]"
+              }
+            ]
+          }
+        }
+      },
+      "resources": [ ],
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_VNet_name'))]",
+        "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_LB_icocluster_node_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/loadBalancers/LB-icocluster-node'.",
+      "type": "Microsoft.Network/loadBalancers",
+      "name": "[parameters('loadBalancers_LB_icocluster_node_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "westeurope",
+      "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "icocluster"
+      },
+      "properties": {
+        "frontendIPConfigurations": [
+          {
+            "name": "LoadBalancerIPConfig",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_PublicIP_LB_FE_0_name'))]"
+              }
+            }
+          }
+        ],
+        "backendAddressPools": [
+          {
+            "name": "LoadBalancerBEAddressPool"
+          }
+        ],
+        "loadBalancingRules": [
+          {
+            "name": "LBRule",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id')]"
+              },
+              "frontendPort": 19000,
+              "backendPort": 19000,
+              "enableFloatingIP": false,
+              "idleTimeoutInMinutes": 5,
+              "protocol": "Tcp",
+              "loadDistribution": "Default",
+              "backendAddressPool": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_1')]"
+              },
+              "probe": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_2')]"
+              }
+            }
+          },
+          {
+            "name": "LBHttpRule",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_3')]"
+              },
+              "frontendPort": 19080,
+              "backendPort": 19080,
+              "enableFloatingIP": false,
+              "idleTimeoutInMinutes": 5,
+              "protocol": "Tcp",
+              "loadDistribution": "Default",
+              "backendAddressPool": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_4')]"
+              },
+              "probe": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_5')]"
+              }
+            }
+          },
+          {
+            "name": "input",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_6')]"
+              },
+              "frontendPort": 20123,
+              "backendPort": 20123,
+              "enableFloatingIP": false,
+              "idleTimeoutInMinutes": 4,
+              "protocol": "Tcp",
+              "loadDistribution": "Default",
+              "backendAddressPool": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_7')]"
+              },
+              "probe": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_8')]"
+              }
+            }
+          },
+          {
+            "name": "input20202",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_9')]"
+              },
+              "frontendPort": 20202,
+              "backendPort": 20202,
+              "enableFloatingIP": false,
+              "idleTimeoutInMinutes": 4,
+              "protocol": "Tcp",
+              "loadDistribution": "Default",
+              "backendAddressPool": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_10')]"
+              },
+              "probe": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_11')]"
+              }
+            }
+          }
+        ],
+        "probes": [
+          {
+            "name": "FabricGatewayProbe",
+            "properties": {
+              "protocol": "Tcp",
+              "port": 19000,
+              "intervalInSeconds": 5,
+              "numberOfProbes": 2
+            }
+          },
+          {
+            "name": "FabricHttpGatewayProbe",
+            "properties": {
+              "protocol": "Tcp",
+              "port": 19080,
+              "intervalInSeconds": 5,
+              "numberOfProbes": 2
+            }
+          }
+        ],
+        "inboundNatRules": [
+          {
+            "name": "LoadBalancerBEAddressNatPool.0",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_12')]"
+              },
+              "frontendPort": 3389,
+              "backendPort": 3389,
+              "protocol": "Tcp"
+            }
+          },
+          {
+            "name": "LoadBalancerBEAddressNatPool.1",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_13')]"
+              },
+              "frontendPort": 3390,
+              "backendPort": 3389,
+              "protocol": "Tcp"
+            }
+          },
+          {
+            "name": "LoadBalancerBEAddressNatPool.2",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_14')]"
+              },
+              "frontendPort": 3391,
+              "backendPort": 3389,
+              "protocol": "Tcp"
+            }
+          },
+          {
+            "name": "LoadBalancerBEAddressNatPool.3",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_15')]"
+              },
+              "frontendPort": 3392,
+              "backendPort": 3389,
+              "protocol": "Tcp"
+            }
+          },
+          {
+            "name": "LoadBalancerBEAddressNatPool.4",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_16')]"
+              },
+              "frontendPort": 3393,
+              "backendPort": 3389,
+              "protocol": "Tcp"
+            }
+          }
+        ],
+        "outboundNatRules": [ ],
+        "inboundNatPools": [
+          {
+            "name": "LoadBalancerBEAddressNatPool",
+            "properties": {
+              "frontendPortRangeStart": 3389,
+              "frontendPortRangeEnd": 4500,
+              "backendPort": 3389,
+              "protocol": "Tcp",
+              "frontendIPConfiguration": {
+                "id": "[parameters('loadBalancers_LB_icocluster_node_id_17')]"
+              }
+            }
+          }
+        ]
+      },
+      "resources": [ ],
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_PublicIP_LB_FE_0_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/publicIPAddresses/PublicIP-LB-FE-0'.",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[parameters('publicIPAddresses_PublicIP_LB_FE_0_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "westeurope",
+      "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "icocluster"
+      },
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic",
+        "idleTimeoutInMinutes": 4,
+        "dnsSettings": {
+          "domainNameLabel": "icocluster"
+        }
+      },
+      "resources": [ ],
+      "dependsOn": [ ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Network/virtualNetworks/VNet'.",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[parameters('virtualNetworks_VNet_name')]",
+      "apiVersion": "2016-03-30",
+      "location": "westeurope",
+      "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "icocluster"
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "Subnet-0",
+            "properties": {
+              "addressPrefix": "10.0.0.0/24"
+            }
+          }
+        ]
+      },
+      "resources": [ ],
+      "dependsOn": [ ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Sql/servers/icoserver'.",
+      "type": "Microsoft.Sql/servers",
+      "kind": "v12.0",
+      "name": "[parameters('servers_icoserver_name')]",
+      "apiVersion": "2014-04-01-preview",
+      "location": "West Europe",
+      "properties": {
+        "administratorLogin": "jan",
+        "administratorLoginPassword": null,
+        "version": "12.0"
+      },
+      "resources": [ ],
+      "dependsOn": [ ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Storage/storageAccounts/e55mqfpwqqqys100'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_e55mqfpwqqqys100_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "westeurope",
+      "tags": {
+        "clusterName": "icocluster",
+        "resourceType": "Service Fabric"
+      },
+      "properties": { },
+      "resources": [ ],
+      "dependsOn": [ ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Storage/storageAccounts/e55mqfpwqqqys101'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_e55mqfpwqqqys101_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "westeurope",
+      "tags": {
+        "clusterName": "icocluster",
+        "resourceType": "Service Fabric"
+      },
+      "properties": { },
+      "resources": [ ],
+      "dependsOn": [ ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Storage/storageAccounts/e55mqfpwqqqys102'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_e55mqfpwqqqys102_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "westeurope",
+      "tags": {
+        "clusterName": "icocluster",
+        "resourceType": "Service Fabric"
+      },
+      "properties": { },
+      "resources": [ ],
+      "dependsOn": [ ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Storage/storageAccounts/e55mqfpwqqqys103'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_e55mqfpwqqqys103_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "westeurope",
+      "tags": {
+        "clusterName": "icocluster",
+        "resourceType": "Service Fabric"
+      },
+      "properties": { },
+      "resources": [ ],
+      "dependsOn": [ ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Storage/storageAccounts/e55mqfpwqqqys104'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_e55mqfpwqqqys104_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "westeurope",
+      "tags": {
+        "clusterName": "icocluster",
+        "resourceType": "Service Fabric"
+      },
+      "properties": { },
+      "resources": [ ],
+      "dependsOn": [ ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Storage/storageAccounts/e55mqfpwqqqys3'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_e55mqfpwqqqys3_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "westeurope",
+      "tags": {
+        "clusterName": "icocluster",
+        "resourceType": "Service Fabric"
+      },
+      "properties": { },
+      "resources": [ ],
+      "dependsOn": [ ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Storage/storageAccounts/icostora'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_icostora_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "westeurope",
+      "tags": { },
+      "properties": { },
+      "resources": [ ],
+      "dependsOn": [ ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Storage/storageAccounts/sflogse55mqfpwqqqys2'.",
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[parameters('storageAccounts_sflogse55mqfpwqqqys2_name')]",
+      "apiVersion": "2016-01-01",
+      "location": "westeurope",
+      "tags": {
+        "clusterName": "icocluster",
+        "resourceType": "Service Fabric"
+      },
+      "properties": { },
+      "resources": [ ],
+      "dependsOn": [ ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Sql/servers/icoserver/databases/icodb'.",
+      "type": "Microsoft.Sql/servers/databases",
+      "kind": "v12.0,user",
+      "name": "[parameters('databases_icodb_name')]",
+      "apiVersion": "2014-04-01-preview",
+      "location": "West Europe",
+      "properties": {
+        "databaseId": "8ed3b614-2928-43ed-b0c2-f718b0390d74",
+        "edition": "Basic",
+        "status": "Online",
+        "serviceLevelObjective": "Basic",
+        "collation": "SQL_Latin1_General_CP1_CI_AS",
+        "maxSizeBytes": "2147483648",
+        "creationDate": "2016-10-06T10:01:19.36Z",
+        "currentServiceObjectiveId": "dd6d99bb-f193-4ec1-86f2-43d3bccbc49c",
+        "requestedServiceObjectiveId": "dd6d99bb-f193-4ec1-86f2-43d3bccbc49c",
+        "requestedServiceObjectiveName": "Basic",
+        "defaultSecondaryLocation": "North Europe",
+        "earliestRestoreDate": "2016-10-17T00:00:00Z",
+        "elasticPoolName": null,
+        "containmentState": 2
+      },
+      "resources": [ ],
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_icoserver_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Sql/servers/icoserver/databases/master'.",
+      "type": "Microsoft.Sql/servers/databases",
+      "kind": "v12.0,system",
+      "name": "[parameters('databases_master_name')]",
+      "apiVersion": "2014-04-01-preview",
+      "location": "West Europe",
+      "properties": {
+        "databaseId": "48b153d5-674c-4b9b-aee7-23acfaf66723",
+        "edition": "Basic",
+        "status": "Online",
+        "serviceLevelObjective": "Basic",
+        "collation": "SQL_Latin1_General_CP1_CI_AS",
+        "maxSizeBytes": "2147483648",
+        "creationDate": "2016-10-06T10:00:43.887Z",
+        "currentServiceObjectiveId": "dd6d99bb-f193-4ec1-86f2-43d3bccbc49c",
+        "requestedServiceObjectiveId": "dd6d99bb-f193-4ec1-86f2-43d3bccbc49c",
+        "requestedServiceObjectiveName": "Basic",
+        "defaultSecondaryLocation": "North Europe",
+        "earliestRestoreDate": null,
+        "elasticPoolName": null,
+        "containmentState": 2
+      },
+      "resources": [ ],
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_icoserver_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Sql/servers/icoserver/firewallRules/AllowAllWindowsAzureIps'.",
+      "type": "Microsoft.Sql/servers/firewallRules",
+      "kind": "v12.0",
+      "name": "[parameters('firewallRules_AllowAllWindowsAzureIps_name')]",
+      "apiVersion": "2014-04-01-preview",
+      "location": "West Europe",
+      "properties": {
+        "startIpAddress": "0.0.0.0",
+        "endIpAddress": "0.0.0.0"
+      },
+      "resources": [ ],
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_icoserver_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Sql/servers/icoserver/firewallRules/ClientIPAddress_2016-9-4_12-32-39'.",
+      "type": "Microsoft.Sql/servers/firewallRules",
+      "kind": "v12.0",
+      "name": "[parameters('firewallRules_ClientIPAddress_2016_9_4_12_32_39_name')]",
+      "apiVersion": "2014-04-01-preview",
+      "location": "West Europe",
+      "properties": {
+        "startIpAddress": "193.85.188.162",
+        "endIpAddress": "193.85.188.162"
+      },
+      "resources": [ ],
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_icoserver_name'))]"
+      ]
+    },
+    {
+      "comments": "Generalized from resource: '/subscriptions/c0e274e0-e8c0-406e-87c1-a250d4caccad/resourceGroups/rg20161006/providers/Microsoft.Sql/servers/icoserver/firewallRules/ClientIPAddress_2016-9-5_17-2-27'.",
+      "type": "Microsoft.Sql/servers/firewallRules",
+      "kind": "v12.0",
+      "name": "[parameters('firewallRules_ClientIPAddress_2016_9_5_17_2_27_name')]",
+      "apiVersion": "2014-04-01-preview",
+      "location": "West Europe",
+      "properties": {
+        "startIpAddress": "193.85.188.162",
+        "endIpAddress": "193.85.188.162"
+      },
+      "resources": [ ],
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('servers_icoserver_name'))]"
+      ]
+    }
+  ]
+}
 
